@@ -40,9 +40,12 @@ RUN apt-get update && apt install fonts-dejavu-core rsync git jq moreutils -y &&
 
 
 RUN --mount=type=cache,target=/root/.cache/pip <<EOF
-git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+# git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+# cd stable-diffusion-webui
+# git reset --hard d7aec59c4eb02f723b3d55c6f927a42e97acd679
+git clone https://github.com/blackstorm/stable-diffusion-webui
 cd stable-diffusion-webui
-git reset --hard d7aec59c4eb02f723b3d55c6f927a42e97acd679
+git checkout lee/ui-turning
 pip install -r requirements_versions.txt
 EOF
 
